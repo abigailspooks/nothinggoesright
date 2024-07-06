@@ -1,0 +1,39 @@
+openapi: 3.0.0
+info:
+  title: Spotify Playlist Creator API
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000  # Replace with your actual server URL if different
+paths:
+  /create_playlist:
+    post:
+      summary: Create a playlist based on user data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                client_secret:
+                  type: string
+                redirect_uri:
+                  type: string
+                user_id:
+                  type: string
+                genres:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Playlist created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  playlist_url:
+                    type: string
